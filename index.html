@@ -4,25 +4,24 @@
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Naissances Mondiales 2000-2010</title>
+    <title>Naissance par pays</title>
     <link rel="stylesheet" href="src/index.css">
   </head>
   
   <body>
-  <!-- Écran de chargement -->
+  <!-- L'écran de chargement -->
   <div id="loading">
     <div class="spinner"></div>
     <p>Chargement des données...</p>
   </div>
 
-  <!-- Conteneur du globe -->
-   
-  <div id="globe-container"></div>
+  <!-- Le conteneur du globe -->
+  <div id="globe-container" class="absolute inset-0 md:right-96 bottom-[50vh] md:bottom-0"></div>
 
-  <!-- Script TopoJSON (nécessaire pour convertir les données géographiques) -->
+  <!-- Le script TopoJson -->
   <script src="https://unpkg.com/topojson-client@3"></script>
   
-  <!-- Script principal -->
+  <!-- Le main -->
   <script type="module" src="/src/main.js"></script>
   </body>
 </html>

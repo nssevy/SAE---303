@@ -1,7 +1,4 @@
-/**
- * Module de traitement des données pays
- * Charge les données de naissances et récupère les coordonnées géographiques
- */
+// Charge les données de naissances et récupère les coordonnées géographiques
 
 import { getCoordonneesPlusieurs } from "./geocodage.js";
 

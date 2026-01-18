@@ -4,7 +4,10 @@ import {
   chargerPolygonesPays,
   configurerPolygonesPays,
   configurerApparence,
+  zoomVersPays,
 } from "./globeConfig.js";
+import { initialiserSidebar, ouvrirSidebar } from "./sideBar.js";
+import { initialiserSearchBar } from "./searchBar.js";
 
 // Fonction principale
 async function init() {
@@ -14,21 +17,45 @@ async function init() {
     // Étape 1 : Charger les données de naissances avec coordonnées
     const donneesCompletes = await chargerDonneesNaissances();
 
-    // Étape 2 : Créer le globe
+    // Étape 2 : Initialiser la sidebar
+    initialiserSidebar();
+
+    // Étape 3 : Créer le globe
     const globe = creerGlobe("globe-container");
 
     if (!globe) {
       throw new Error("Impossible de créer le globe");
     }
 
-    // Étape 3 : Charger les polygones des pays
+    // Étape 4 : Charger les polygones des pays
     const geoJsonData = await chargerPolygonesPays();
 
-    // Étape 4 : Configurer les polygones sur le globe
-    configurerPolygonesPays(globe, geoJsonData, donneesCompletes);
+    // Étape 5 : Configurer les polygones sur le globe
+    configurerPolygonesPays(globe, geoJsonData, donneesCompletes, (polygon) => {
+      // Récupérer le code ISO (avec fallback sur ISO_A2_EH pour France, Norvège, etc.)
+      let codeISO = polygon.properties.iso_a2 || polygon.properties.ISO_A2;
+      if (!codeISO || codeISO === "-99" || codeISO === -99) {
+        codeISO = polygon.properties.ISO_A2_EH;
+      }
+      ouvrirSidebar(codeISO, donneesCompletes);
+    });
 
-    // Étape 5 : Configurer l'apparence
+    // Étape 6 : Configurer l'apparence
     configurerApparence(globe);
+
+    // Étape 7 : Initialiser la barre de recherche
+    const listePays = [...new Set(donneesCompletes.donneesNaissances.map((r) => r.ISO_ETAT))].map(
+      (iso) => ({
+        codeISO: iso,
+        nom: donneesCompletes.donneesNaissances.find((r) => r.ISO_ETAT === iso)?.NOM_COURT || iso,
+      })
+    );
+
+    initialiserSearchBar(listePays, (codeISO) => {
+      const coords = donneesCompletes.coordonnees[codeISO];
+      zoomVersPays(globe, coords);
+      ouvrirSidebar(codeISO, donneesCompletes);
+    });
 
     // Masquer l'écran de chargement
     loadingScreen.classList.add("hidden");
