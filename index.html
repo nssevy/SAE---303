@@ -9,9 +9,20 @@
   </head>
   
   <body>
-    <div id="app"></div>
-    <!-- IMPORTANT : Cette ligne doit être présente -->
-    <script src="https://unpkg.com/topojson-client@3"></script>
-    <script type="module" src="/src/main.js"></script>
+  <!-- Écran de chargement -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>Chargement des données...</p>
+  </div>
+
+  <!-- Conteneur du globe -->
+   
+  <div id="globe-container"></div>
+
+  <!-- Script TopoJSON (nécessaire pour convertir les données géographiques) -->
+  <script src="https://unpkg.com/topojson-client@3"></script>
+  
+  <!-- Script principal -->
+  <script type="module" src="/src/main.js"></script>
   </body>
 </html>
