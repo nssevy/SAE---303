@@ -9,8 +9,7 @@ import { getCoordonneesPlusieurs } from "./geocodage.js";
 export async function chargerDonneesNaissances() {
   try {
     // Étape 1 : Charger le fichier JSON des naissances
-    const response = await fetch("../naissances-par-pays-2000-2010.json");
-
+    const response = await fetch("/naissances-par-pays-2000-2010.json");
     if (!response.ok) {
       throw new Error(`Erreur de chargement: ${response.status}`);
     }

@@ -1,27 +1,160 @@
 <!doctype html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Naissance par pays</title>
-    <link rel="stylesheet" href="src/index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naissances par Pays 2000-2010</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   
-  <body>
-  <!-- L'écran de chargement -->
-  <div id="loading">
-    <div class="spinner"></div>
-    <p>Chargement des données...</p>
-  </div>
+  <body class="min-h-screen w-full flex flex-col relative text-white">
+    <!-- Emerald Void Background -->
+    <div 
+      class="absolute inset-0 z-0"
+      style="background: radial-gradient(125% 125% at 50% 90%, #000000 40%, #072607 100%);"
+    ></div>
 
-  <!-- Le conteneur du globe -->
-  <div id="globe-container" class="absolute inset-0 md:right-96 bottom-[50vh] md:bottom-0"></div>
+    <main class="relative z-10 flex-1 flex flex-col">
+      <div class="container mx-auto px-4 py-16">
+        
+        <!-- Hero Section -->
+        <section class="max-w-4xl mx-auto flex flex-col items-center mb-20 gap-10">
+          <span class="inline-block px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold border border-emerald-500/30">
+            SAÉ 3.03 - Concevoir des visualisations de données pour le web
+          </span>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-medium text-white text-left md:row-span-2 flex items-center">
+              Visualisation des Naissances Mondiales
+            </h1>
+            
+            <p class="text-lg md:text-xl text-white/60 leading-relaxed text-left self-end">
+              Une expérience interactive en 3D pour découvrir l'évolution démographique mondiale entre 2000 et 2010
+            </p>
+          </div>
 
-  <!-- Le script TopoJson -->
-  <script src="https://unpkg.com/topojson-client@3"></script>
-  
-  <!-- Le main -->
-  <script type="module" src="/src/main.js"></script>
+        </section>
+
+        <!-- À propos Section -->
+        <section class="max-w-4xl mx-auto flex flex-col mb-24">
+          <h2 class="text-3xl font-medium text-white mb-6">À propos du projet</h2>
+          
+          <div class="flex flex-col gap-6 text-white/60 leading-relaxed text-lg">
+            <p>
+              Ce projet a été réalisé par trois étudiants en deuxième année de BUT MMI dans le cadre de la SAE 3.03. 
+              Notre objectif était de transformer des statistiques brutes en une expérience visuelle et accessible.
+            </p>
+
+            <p>
+              À travers cette application de data visualisation, vous pourrez explorer un globe 3D interactif présentant 
+              les données de naissances par pays, rechercher un pays spécifique et visualiser son évolution démographique, 
+              et consulter des graphiques détaillés ainsi que des tableaux statistiques pour chaque pays.
+            </p>
+
+            <div class="flex flex-col gap-4 pt-6">
+              <h3 class="text-xl font-semibold text-white/90">Technologies utilisées</h3>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-lg text-sm font-medium border border-emerald-500/20">Globe.GL</span>
+                <span class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-lg text-sm font-medium border border-emerald-500/20">Chart.js</span>
+                <span class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-lg text-sm font-medium border border-emerald-500/20">Tailwind CSS</span>
+                <span class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-lg text-sm font-medium border border-emerald-500/20">JavaScript ES6+</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Équipe Section -->
+        <section class="max-w-4xl mx-auto flex flex-col mb-24">
+          <h2 class="text-3xl font-medium text-white mb-8">L'équipe</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Membre 1 -->
+            <article class="flex flex-col items-center">
+              <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-full mb-4 flex items-center justify-center text-3xl font-bold">
+                YN
+              </div>
+              <h3 class="text-xl font-semibold text-white mb-1">Yves Nsabimana</h3>
+              <p class="text-white/50">Développeur</p>
+            </article>
+
+            <!-- Membre 2 -->
+            <article class="flex flex-col items-center">
+              <div class="w-24 h-24 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-full mb-4 flex items-center justify-center text-3xl font-bold">
+                HR
+              </div>
+              <h3 class="text-xl font-semibold text-white mb-1">Hizia Rawat</h3>
+              <p class="text-white/50">Développeur</p>
+            </article>
+
+            <!-- Membre 3 -->
+            <article class="flex flex-col items-center">
+              <div class="w-24 h-24 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-full mb-4 flex items-center justify-center text-3xl font-bold">
+                FT
+              </div>
+              <h3 class="text-xl font-semibold text-white mb-1">Fily Touré</h3>
+              <p class="text-white/50">Développeur</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Sources Section -->
+        <section class="max-w-4xl mx-auto flex flex-col mb-24">
+          <h2 class="text-3xl font-medium text-white mb-6">Sources</h2>
+          
+          <div class="flex flex-col gap-6 text-white/60">
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-semibold text-white/90">Jeu de données</h3>
+              <p class="text-white/70">naissances-par-pays-2000-2010.json</p>
+              <p class="text-sm text-white/50">Période de collecte : 2000-2010</p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-semibold text-white/90">API de géocodage</h3>
+              <a href="https://restcountries.com" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition-colors">
+                REST Countries API
+              </a>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-semibold text-white/90">Données géographiques</h3>
+              <a href="https://github.com/nvkelso/natural-earth-vector" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition-colors">
+                Natural Earth Vector - GeoJSON
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-white/10 py-12">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto flex flex-col">
+          <!-- Informations du projet -->
+          <div class="flex flex-col items-center mb-8">
+            <p class="text-white/60 text-sm mb-2">
+              SAÉ 3.03 - Concevoir des visualisations de données pour le web
+            </p>
+            <p class="text-white/40 text-sm">
+              BUT MMI 2 - IUT de Cergy-Pontoise - Année universitaire 2025-2026
+            </p>
+          </div>
+          
+          <!-- Logos -->
+          <div class="flex items-center justify-center gap-8 pt-8 border-t border-white/10">
+            <img src="assets/logos/CY_IUT_coul.svg" alt="Logo IUT Cergy-Pontoise" class="h-16 md:h-20 opacity-80">
+            <img src="assets/logos/CY_Cergy_Paris Universite_coul.svg" alt="Logo CY Cergy Paris Université" class="h-16 md:h-20 opacity-80">
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Bouton fixe en bas -->
+    <a 
+      href="app/index.html" 
+      class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center px-5 py-3 bg-emerald-900 hover:bg-emerald-800 rounded-full text-base transition-all text-emerald-300 border border-emerald-500/30"
+    >
+      Lancer l'application
+    </a>
   </body>
 </html>
